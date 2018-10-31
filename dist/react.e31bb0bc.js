@@ -23076,12 +23076,53 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"index.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"src/calc.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Calc =
+/*#__PURE__*/
+function () {
+  function Calc() {
+    _classCallCheck(this, Calc);
+  }
+
+  _createClass(Calc, [{
+    key: "make",
+    value: function make(a, b, action) {
+      switch (action) {
+        case 'plus':
+          return a * 1 + b * 1;
+
+        case 'minus':
+          return a * 1 - b * 1;
+      }
+    }
+  }]);
+
+  return Calc;
+}();
+
+var _default = Calc;
+exports.default = _default;
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _calc = _interopRequireDefault(require("./src/calc"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23095,13 +23136,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 var App =
 /*#__PURE__*/
@@ -23114,14 +23155,69 @@ function (_React$PureComponent) {
     _classCallCheck(this, App);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    _this.state = {};
+    _this.state = {
+      a: 0,
+      b: 0,
+      action: '',
+      res: 0
+    };
+    _this.handleSetA = _this.handleSetA.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleSetB = _this.handleSetB.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.Calc = new _calc.default();
+    }
+  }, {
+    key: "handleSetA",
+    value: function handleSetA(e) {
+      this.setState({
+        a: e.target.value
+      });
+    }
+  }, {
+    key: "handleSetB",
+    value: function handleSetB(e) {
+      this.setState({
+        b: e.target.value
+      });
+    }
+  }, {
+    key: "calc",
+    value: function calc(action) {
+      this.setState({
+        res: this.Calc.make(this.state.a, this.state.b, action)
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null);
+      var _this2 = this;
+
+      return _react.default.createElement("div", null, _react.default.createElement("input", {
+        type: "text",
+        value: this.state.a,
+        onChange: this.handleSetA
+      }), _react.default.createElement("input", {
+        type: "button",
+        value: "+",
+        onClick: function onClick() {
+          _this2.calc('plus');
+        }
+      }), _react.default.createElement("input", {
+        type: "button",
+        value: "-",
+        onClick: function onClick() {
+          _this2.calc('minus');
+        }
+      }), _react.default.createElement("input", {
+        type: "text",
+        value: this.state.b,
+        onChange: this.handleSetB
+      }), this.state.res);
     }
   }]);
 
@@ -23129,7 +23225,7 @@ function (_React$PureComponent) {
 }(_react.default.PureComponent);
 
 _reactDom.default.render(_react.default.createElement(App, null), document.getElementById('root'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./src/calc":"src/calc.js"}],"../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
