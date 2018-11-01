@@ -29404,7 +29404,79 @@ function () {
 
 var _default = Check;
 exports.default = _default;
-},{}],"src/index.js":[function(require,module,exports) {
+},{}],"../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/styles.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29417,6 +29489,8 @@ var _react = _interopRequireDefault(require("react"));
 var _collection = require("lodash/collection");
 
 var _check = _interopRequireDefault(require("./check"));
+
+require("./styles.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29513,33 +29587,48 @@ function (_React$PureComponent) {
     value: function render() {
       var _this2 = this;
 
-      return _react.default.createElement("div", null, _react.default.createElement("input", {
+      return _react.default.createElement("div", {
+        className: "check"
+      }, _react.default.createElement("div", {
+        className: "check__form"
+      }, _react.default.createElement("input", {
+        className: "check__input",
         type: "text",
         placeholder: "name",
         value: this.state.name,
         onChange: this.handleSetName
       }), _react.default.createElement("input", {
+        className: "check__input",
         type: "text",
         placeholder: "cost",
         value: this.state.cost,
         onChange: this.handleSetCost
       }), _react.default.createElement("input", {
+        className: "check__btn",
         type: "button",
         value: "Add",
         onClick: function onClick() {
           _this2.add();
         }
-      }), this.state.items.length > 0 && (0, _collection.map)(this.state.items, function (item, i) {
+      })), this.state.items.length > 0 && _react.default.createElement("div", {
+        className: "check__list"
+      }, (0, _collection.map)(this.state.items, function (item, i) {
         return _react.default.createElement("div", {
-          key: i
-        }, item.name, " ", item.cost, _react.default.createElement("input", {
+          key: i,
+          className: "check__item"
+        }, _react.default.createElement("div", null, item.name), _react.default.createElement("div", {
+          className: "check__cost"
+        }, item.cost), _react.default.createElement("input", {
+          className: "check__remove",
           type: "button",
           value: "remove",
           onClick: function onClick() {
             _this2.remove(item.name);
           }
         }));
-      }), _react.default.createElement("div", null, "total: ", this.state.total));
+      })), _react.default.createElement("div", {
+        className: "check__total"
+      }, "total: ", this.state.total));
     }
   }]);
 
@@ -29548,7 +29637,7 @@ function (_React$PureComponent) {
 
 var _default = Index;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","lodash/collection":"node_modules/lodash/collection.js","./check":"src/check.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","lodash/collection":"node_modules/lodash/collection.js","./check":"src/check.js","./styles.scss":"src/styles.scss"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29591,7 +29680,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55742" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50931" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
