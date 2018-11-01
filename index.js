@@ -1,16 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
+import Index from './src/index';
 
-    this.state = {};
-  }
-
-  render() {
-    return <div />;
-  }
+function App() {
+  return <Index />;
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
