@@ -1,19 +1,10 @@
 import React from 'react';
 
-import './style.scss';
+import products from '~/src/constants/products';
+import Catalog from './components/Catalog/index';
 
-class Index extends React.PureComponent {
-  state = {
-    a: 0
-  };
-
-  render() {
-    return (
-      <div className="wrapper">
-        {this.state.a}
-      </div>
-    );
-  }
+function Index() {
+  return <Catalog products={products} />;
 }
 
 export default Index;

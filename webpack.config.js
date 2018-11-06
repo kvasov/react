@@ -29,7 +29,11 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    extensions: ['*', '.js', '.jsx'],
+    alias: {
+      '~': process.cwd()
+    }
   },
   output: {
     path: PATHS.dist,
