@@ -1,6 +1,6 @@
 import React from 'react';
 
-import products from '~/src/constants/products';
+import products from 'constants/products';
 import Catalog from './components/Catalog/index';
 
 function Index() {

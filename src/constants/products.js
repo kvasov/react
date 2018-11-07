@@ -13,7 +13,7 @@ const products = [
   },
   {
     id: 'product-3',
-    title: 'Стул',
+    title: 'Двер<b>ь</b>',
     price: 7820,
     imageUrl: 'https://majorfloor.ru/image/cache/data/VFD/0/11-1000x1000.png'
   }

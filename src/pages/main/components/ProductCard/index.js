@@ -11,8 +11,8 @@ function ProductCard(props) {
   return (
     <div className={classNames(props.className, 'product-card')}>
       <Image src={props.data.imageUrl} width={200} height={200} />
-      <TextBox text={props.data.title} />
-      <Price price={props.data.price} />
+      <TextBox>{props.data.title}</TextBox>
+      <Price>{props.data.price}</Price>
     </div>
   );
 }
