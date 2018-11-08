@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Image from 'core/components/Image';
@@ -16,5 +17,12 @@ function ProductCard(props) {
     </div>
   );
 }
+
+ProductCard.propTypes = {
+  className: PropTypes.string,
+  data: PropTypes.object,
+  title: PropTypes.string,
+  price: PropTypes.number
+};
 
 export default ProductCard;
