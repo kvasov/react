@@ -1,0 +1,12 @@
+.products {
+  padding: 40px 0;
+  text-align: center;
+
+  &__item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+}
