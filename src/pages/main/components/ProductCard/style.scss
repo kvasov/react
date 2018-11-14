@@ -1,16 +1,57 @@
 .product-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 5px;
   border: 1px solid #ddd;
 
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+  }
+
   img {
+    position: relative;
     object-fit: contain;
     margin-bottom: 10px;
   }
 
   span {
     display: block;
+  }
+
+  &__count {
+    margin: 5px 0;
+  }
+
+  &__count--error {
+    border: 1px solid #f00;
+  }
+
+  &__add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    margin: 10px 0 0;
+    border: 1px solid #ccc;
+  }
+
+  &__exist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    margin: 10px 0 0;
+    font-size: 12px;
+    opacity: 0.5;
+    border: 1px solid #fff;
   }
 }
