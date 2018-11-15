@@ -10,19 +10,9 @@ import ProductAdd from '../ProductAdd/index';
 import './style.scss';
 
 class ProductCard extends React.PureComponent {
-  state = {
-    count: 1
-  };
-
-  setCount = count => {
-    this.setState({
-      count
-    });
-  };
-
   onDragStart = e => {
     e.dataTransfer.setData('id', this.props.data.id);
-    e.dataTransfer.setData('count', this.state.count);
+    e.dataTransfer.setData('count', 1);
   };
 
   render() {
@@ -37,7 +27,7 @@ class ProductCard extends React.PureComponent {
         <Image src={data.imageUrl} width={200} height={200} />
         <TextBox>{data.title}</TextBox>
         <Price>{data.price}</Price>
-        <ProductAdd data={data} setCount={this.setCount} />
+        <ProductAdd data={data} />
       </div>
     );
   }

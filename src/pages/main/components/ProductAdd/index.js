@@ -13,17 +13,10 @@ class ProductAdd extends React.PureComponent {
   };
 
   handleChangeCount = e => {
-    this.setState(
-      {
-        count: e.target.value,
-        countError: !(!isNaN(parseInt(e.target.value)) && isFinite(e.target.value))
-      },
-      () => {
-        if (!this.state.countError) {
-          this.props.setCount(this.state.count);
-        }
-      }
-    );
+    this.setState({
+      count: e.target.value,
+      countError: !(!isNaN(parseInt(e.target.value)) && isFinite(e.target.value))
+    });
   };
 
   render() {
