@@ -8,11 +8,7 @@ import СartContext from 'core/components/cartContext';
 import products from 'constants/products';
 
 class Index extends React.PureComponent {
-  state = {
-    cart: [],
-    addToCart: (id, count) => this.addToCart(id, count),
-    checkItemInCart: id => this.checkItemInCart(id)
-  };
+  state = { cart: [] };
 
   addToCart(id, count) {
     this.setState(
@@ -38,7 +34,13 @@ class Index extends React.PureComponent {
 
   render() {
     return (
-      <СartContext.Provider value={this.state}>
+      <СartContext.Provider
+        value={{
+          cart: this.state.cart,
+          addToCart: (id, count) => this.addToCart(id, count),
+          checkItemInCart: id => this.checkItemInCart(id)
+        }}
+      >
         <Header />
         <Catalog products={products} />
       </СartContext.Provider>

@@ -2,24 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import СartContext from 'core/components/cartContext';
-
 import Image from 'core/components/Image';
 import TextBox from 'core/components/TextBox';
 import Price from 'core/components/Price';
+import ProductAdd from '../ProductAdd/index';
 
 import './style.scss';
 
 class ProductCard extends React.PureComponent {
   state = {
-    count: 1,
-    countError: false
+    count: 1
   };
 
-  handleChangeCount = e => {
+  setCount = count => {
     this.setState({
-      count: e.target.value,
-      countError: !(!isNaN(parseInt(e.target.value)) && isFinite(e.target.value))
+      count
     });
   };
 
@@ -29,42 +26,18 @@ class ProductCard extends React.PureComponent {
   };
 
   render() {
+    const { className, data } = this.props;
+
     return (
       <div
         draggable={true}
         onDragStart={this.onDragStart}
-        className={classNames(this.props.className, 'product-card')}
+        className={classNames(className, 'product-card')}
       >
-        <Image src={this.props.data.imageUrl} width={200} height={200} />
-        <TextBox>{this.props.data.title}</TextBox>
-        <Price>{this.props.data.price}</Price>
-        <СartContext.Consumer>
-          {({ addToCart, checkItemInCart }) =>
-            checkItemInCart(this.props.data.id) ? (
-              <span className="product-card__exist">Добавлено</span>
-            ) : (
-              <React.Fragment>
-                <input
-                  className={classNames('product-card__count', {
-                    ['product-card__count--error']: this.state.countError
-                  })}
-                  value={this.state.count}
-                  onChange={this.handleChangeCount}
-                />
-                <button
-                  onClick={() => {
-                    if (!this.state.countError) {
-                      addToCart(this.props.data.id, this.state.count);
-                    }
-                  }}
-                  className="product-card__add"
-                >
-                  Add
-                </button>
-              </React.Fragment>
-            )
-          }
-        </СartContext.Consumer>
+        <Image src={data.imageUrl} width={200} height={200} />
+        <TextBox>{data.title}</TextBox>
+        <Price>{data.price}</Price>
+        <ProductAdd data={data} setCount={this.setCount} />
       </div>
     );
   }
