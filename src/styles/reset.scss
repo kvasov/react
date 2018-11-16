@@ -1,4 +1,16 @@
 * {
+  padding: 0;
+  margin: 0;
   font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva,
     Arial, sans-serif;
+}
+
+*,
+*:active,
+*:focus {
+  outline: none;
+}
+
+.container {
+  padding: 0 15px;
 }

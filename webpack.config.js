@@ -9,7 +9,7 @@ const PATHS = {
 };
 
 module.exports = {
-  entry: PATHS.source + '/index.js',
+  entry: `${PATHS.source}/index.js`,
   mode: 'development',
   module: {
     rules: [
@@ -20,13 +20,15 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-          'resolve-url-loader',
-          'postcss-loader'
-        ]
+        use: ['style-loader', 'css-loader', 'sass-loader', 'resolve-url-loader', 'postcss-loader']
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ['file-loader']
       }
     ]
   },
