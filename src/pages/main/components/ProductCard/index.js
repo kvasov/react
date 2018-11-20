@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import Image from 'core/components/Image';
 import TextBox from 'core/components/TextBox';
@@ -24,8 +25,10 @@ class ProductCard extends React.PureComponent {
         onDragStart={this.onDragStart}
         className={classNames(className, 'product-card')}
       >
-        <Image src={data.imageUrl} width={200} height={200} />
-        <TextBox>{data.title}</TextBox>
+        <Image src={data.img.fields.file.url} width={200} height={200} />
+        <Link to={`/products/${data.id}`}>
+          <TextBox>{data.name}</TextBox>
+        </Link>
         <Price>{data.price}</Price>
         <ProductAdd data={data} />
       </div>
