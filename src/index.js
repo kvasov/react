@@ -20,9 +20,22 @@ class Root extends React.PureComponent {
     cart: []
   };
 
-  addToCart(id, count) {
+  addToCart(id, name, count) {
     this.setState({
-      cart: this.state.cart.concat([{ id, count: parseInt(count) }])
+      cart: this.state.cart.concat([{ id, name, count: parseInt(count) }])
+    });
+  }
+
+  removeFromCart(id) {
+    const res = [];
+    map(this.state.cart, (product, i) => {
+      if (id !== i) {
+        res.push(product);
+      }
+    });
+
+    this.setState({
+      cart: res
     });
   }
 
@@ -42,7 +55,8 @@ class Root extends React.PureComponent {
       <СartContext.Provider
         value={{
           cart: this.state.cart,
-          addToCart: (id, count) => this.addToCart(id, count),
+          addToCart: (id, name, count) => this.addToCart(id, name, count),
+          removeFromCart: id => this.removeFromCart(id),
           checkItemInCart: id => this.checkItemInCart(id)
         }}
       >

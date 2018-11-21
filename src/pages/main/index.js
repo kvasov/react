@@ -1,4 +1,5 @@
 import React from 'react';
+import client from 'helpers/contentful';
 
 import Header from 'core/components/Header/index';
 import Catalog from './components/Catalog/index';
@@ -9,14 +10,6 @@ class Index extends React.PureComponent {
   };
 
   componentDidMount() {
-    const contentful = require('contentful');
-
-    const client = contentful.createClient({
-      space: 's2s4jjza7wvf',
-      environment: 'master',
-      accessToken: '60b5336d49589f58f7fbd9ab244e653564609e68f66839f3210567fb3ba678b9'
-    });
-
     client
       .getEntries()
       .then(response => {
@@ -30,7 +23,12 @@ class Index extends React.PureComponent {
     return (
       <React.Fragment>
         <Header />
-        <Catalog products={this.state.products} />
+        <div className="main-page">
+          <div className="container">
+            {this.props.location.state ? this.props.location.state.message : ''}
+            <Catalog products={this.state.products} />
+          </div>
+        </div>
       </React.Fragment>
     );
   }

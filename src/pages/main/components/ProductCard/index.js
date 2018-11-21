@@ -13,6 +13,7 @@ import './style.scss';
 class ProductCard extends React.PureComponent {
   onDragStart = e => {
     e.dataTransfer.setData('id', this.props.data.id);
+    e.dataTransfer.setData('name', this.props.data.name);
     e.dataTransfer.setData('count', 1);
   };
 

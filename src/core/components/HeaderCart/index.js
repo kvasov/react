@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
+import { cartPath } from 'helpers/routes/cart';
 import СartContext from '../cartContext';
 
 import './style.scss';
@@ -18,17 +20,23 @@ class HeaderCart extends React.PureComponent {
 
   onDrop = e => {
     const id = e.dataTransfer.getData('id');
+    const name = e.dataTransfer.getData('name');
     const count = e.dataTransfer.getData('count');
-    this.props.addToCart(id, count);
+    this.props.addToCart(id, name, count);
     e.stopPropagation();
     e.preventDefault();
   };
 
   render() {
     return (
-      <div onDragOver={this.onDragOver} onDrop={this.onDrop} className="header-cart">
+      <Link
+        to={cartPath()}
+        onDragOver={this.onDragOver}
+        onDrop={this.onDrop}
+        className="header-cart"
+      >
         <span className="header-cart__count">{getTotalCount(this.props.cart)}</span>
-      </div>
+      </Link>
     );
   }
 }
