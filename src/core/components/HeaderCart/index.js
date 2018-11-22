@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { cartPath } from 'helpers/routes/cart';
+import { cartPath } from '~/helpers/routes/cart';
 import СartContext from '../cartContext';
 
 import './style.scss';
 
 function getTotalCount(arr) {
   const result = arr.reduce((sum, current) => sum + parseInt(current.count), 0);
-
   return result;
 }
 

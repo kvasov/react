@@ -2,7 +2,7 @@ import React from 'react';
 import { map } from 'lodash/collection';
 import { Redirect } from 'react-router-dom';
 
-import СartContext from 'core/components/cartContext';
+import СartContext from '~/core/components/cartContext';
 
 import './style.scss';
 

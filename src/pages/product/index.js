@@ -1,7 +1,7 @@
 import React from 'react';
-import client from 'helpers/contentful';
+import client from '~/helpers/contentful';
 
-import Header from 'core/components/Header/index';
+import Header from '~/core/components/Header/index';
 
 import './style.scss';
 
@@ -19,15 +19,10 @@ class Product extends React.PureComponent {
         'fields.id': this.props.id
       })
       .then(response => {
-        this.setState(
-          {
-            product: response.items[0].fields,
-            loaded: true
-          },
-          () => {
-            console.log(this.state.product);
-          }
-        );
+        this.setState({
+          product: response.items[0].fields,
+          loaded: true
+        });
       });
   }
 

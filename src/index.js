@@ -5,7 +5,7 @@ import { map } from 'lodash/collection';
 
 import { Router } from 'react-router-dom';
 
-import СartContext from 'core/components/cartContext';
+import СartContext from '~/core/components/cartContext';
 
 import history from './helpers/history';
 import routes from './routes/index';

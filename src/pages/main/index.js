@@ -1,7 +1,7 @@
 import React from 'react';
-import client from 'helpers/contentful';
+import client from '~/helpers/contentful';
 
-import Header from 'core/components/Header/index';
+import Header from '~/core/components/Header/index';
 import Catalog from './components/Catalog/index';
 
 class Index extends React.PureComponent {
@@ -13,7 +13,6 @@ class Index extends React.PureComponent {
     client
       .getEntries()
       .then(response => {
-        console.log(response.items);
         this.setState({ products: response.items });
       })
       .catch(console.error);

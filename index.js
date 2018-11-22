@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
 
-class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
+// class App extends React.PureComponent {
+//   constructor(props) {
+//     super(props);
 
-    this.state = {};
-  }
+//     this.state = {};
+//   }
 
-  render() {
-    return <div />;
-  }
-}
+//   render() {
+//     return <div />;
+//   }
+// }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import Image from 'core/components/Image';
-import TextBox from 'core/components/TextBox';
-import Price from 'core/components/Price';
+import Image from '~/core/components/Image';
+import TextBox from '~/core/components/TextBox';
+import Price from '~/core/components/Price';
 import ProductAdd from '../ProductAdd/index';
 
 import './style.scss';

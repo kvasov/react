@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from 'core/components/Header/index';
+import Header from '~/core/components/Header/index';
 import CartContent from './components/CartContent/index';
 
 function Cart() {
