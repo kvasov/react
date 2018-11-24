@@ -4,11 +4,6 @@ require('app-module-path').addPath(`${__dirname}/src`);
 import register from 'ignore-styles';
 register(['.sass', '.scss']);
 
-// function noop() {
-//   return null;
-// }
-// require.extensions['.scss'] = noop;
-
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 

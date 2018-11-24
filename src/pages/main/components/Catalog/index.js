@@ -8,8 +8,8 @@ import './style.scss';
 function Catalog(props) {
   return (
     <div className="products">
-      {map(props.products, (product, key) => (
-        <ProductCard className="products__item" key={key} data={product.fields} />
+      {map(props.products, product => (
+        <ProductCard className="products__item" key={product.fields.id} data={product.fields} />
       ))}
     </div>
   );

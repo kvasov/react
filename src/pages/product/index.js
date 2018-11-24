@@ -27,15 +27,17 @@ class Product extends React.PureComponent {
   }
 
   render() {
+    const { product, loaded } = this.state;
+
     return (
       <React.Fragment>
         <Header />
         <div className="product">
           <div className="container">
             <div className="product__photo">
-              {this.state.loaded && <img src={this.state.product.img.fields.file.url} />}
+              {loaded && <img src={product.img.fields.file.url} />}
             </div>
-            <div className="product__info">{this.state.product.name}</div>
+            <div className="product__info">{product.name}</div>
           </div>
         </div>
       </React.Fragment>
