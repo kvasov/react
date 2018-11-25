@@ -9,7 +9,7 @@ function Catalog(props) {
   return (
     <div className="products">
       {map(props.products, product => (
-        <ProductCard className="products__item" key={product.id} data={product} />
+        <ProductCard className="products__item" key={product.fields.id} data={product.fields} />
       ))}
     </div>
   );

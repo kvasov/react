@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import СartContext from 'core/components/cartContext';
+import СartContext from '~/core/components/cartContext';
 
 import './style.scss';
 
@@ -38,7 +38,7 @@ class ProductAdd extends React.PureComponent {
               <button
                 onClick={() => {
                   if (!this.state.countError) {
-                    addToCart(data.id, this.state.count);
+                    addToCart(data.id, data.name, this.state.count);
                   }
                 }}
                 className="product-card__add"

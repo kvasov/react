@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 
-require('app-module-path').addPath(__dirname);
+// require('app-module-path').addPath(__dirname);
 
 const PATHS = {
   source: path.join(__dirname, 'src'),
@@ -34,7 +34,10 @@ module.exports = {
   },
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
+    alias: {
+      '~': path.resolve(__dirname, 'src')
+    }
   },
   output: {
     path: PATHS.dist,
