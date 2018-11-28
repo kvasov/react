@@ -2,6 +2,7 @@ import React from 'react';
 import client from '~/helpers/contentful';
 
 import Header from '~/core/components/Header/index';
+import ProductGallery from './components/Gallery/index';
 
 import './style.scss';
 
@@ -34,9 +35,8 @@ class Product extends React.PureComponent {
         <Header />
         <div className="product">
           <div className="container">
-            <div className="product__photo">
-              {loaded && <img src={product.img.fields.file.url} />}
-            </div>
+            {loaded && <ProductGallery photos={this.state.product.gallery} />}
+
             <div className="product__info">{product.name}</div>
           </div>
         </div>
