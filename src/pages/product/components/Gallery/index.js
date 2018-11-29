@@ -1,6 +1,6 @@
 import React from 'react';
-import { map } from 'lodash/collection';
 import { withRouter } from 'react-router';
+import { map } from 'lodash/collection';
 
 import Modal from 'core/components/Modal/index';
 
@@ -19,14 +19,11 @@ class Gallery extends React.PureComponent {
   };
 
   componentDidMount() {
-    const { location } = this.props;
-    console.log(location);
-
+    const { photos, currentImg } = this.props;
     this.setState({
-      countImages: this.props.photos.length,
-      currentImg: location.search.split('img=').length > 1 ? location.search.split('img=')[1] : 0
+      countImages: photos.length,
+      currentImg
     });
-
     this.addListeners();
   }
 
@@ -129,10 +126,12 @@ class Gallery extends React.PureComponent {
   }
 
   render() {
+    const { photos } = this.props;
+
     const gallery = (
       <div className="product__photos product-photos">
         <div className="product-photos__main-photo" ref={this.mainPhoto}>
-          <img src={this.props.photos[this.state.currentImg].fields.file.url} />
+          <img src={photos[this.state.currentImg]} />
 
           <div
             onClick={() => this.showPrev()}
@@ -149,8 +148,8 @@ class Gallery extends React.PureComponent {
         </div>
 
         <div className="product-photos__list-photos">
-          {map(this.props.photos, (img, key) => (
-            <img key={key} src={img.fields.file.url} onClick={() => this.handleChangeImg(key)} />
+          {map(photos, (img, key) => (
+            <img key={key} src={img} onClick={() => this.handleChangeImg(key)} />
           ))}
         </div>
         <div onClick={() => this.toggleFullScreen()}>
