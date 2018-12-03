@@ -3,6 +3,7 @@ import client from '~/helpers/contentful';
 
 import Header from '~/core/components/Header/index';
 import Catalog from './components/Catalog/index';
+import Favorites from './components/Favorites/index';
 
 class Index extends React.PureComponent {
   state = {
@@ -26,6 +27,7 @@ class Index extends React.PureComponent {
           <div className="container">
             {this.props.location.state ? this.props.location.state.message : ''}
             <Catalog products={this.state.products} />
+            <Favorites />
           </div>
         </div>
       </React.Fragment>

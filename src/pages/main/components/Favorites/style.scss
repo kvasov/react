@@ -1,0 +1,41 @@
+.favorites {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+
+  &__title {
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  &__slider {
+    position: relative;
+    padding: 0 30px;
+  }
+
+  &__nav {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    height: 100%;
+    width: 30px;
+    background-color: #173ca1;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  &__item {
+    width: 212px;
+  }
+
+  .prev {
+    left: 0;
+  }
+
+  .next {
+    right: 0;
+  }
+}
