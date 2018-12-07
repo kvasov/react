@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { cartPath } from '~/helpers/routes/cart';
-import СartContext from '../cartContext';
 
 import './style.scss';
 
@@ -21,7 +20,8 @@ class HeaderCart extends React.PureComponent {
     const id = e.dataTransfer.getData('id');
     const name = e.dataTransfer.getData('name');
     const count = e.dataTransfer.getData('count');
-    this.props.addToCart(id, name, count);
+    const products = this.props.products.concat([{ id, name, count }]);
+    this.props.onAddProducts(products);
     e.stopPropagation();
     e.preventDefault();
   };
@@ -34,7 +34,7 @@ class HeaderCart extends React.PureComponent {
         onDrop={this.onDrop}
         className="header-cart"
       >
-        <span className="header-cart__count">{getTotalCount(this.props.cart)}</span>
+        <span className="header-cart__count">{getTotalCount(this.props.products)}</span>
       </Link>
     );
   }
@@ -45,8 +45,4 @@ HeaderCart.propTypes = {
   cart: PropTypes.array
 };
 
-export default () => (
-  <СartContext.Consumer>
-    {({ addToCart, cart }) => <HeaderCart addToCart={addToCart} cart={cart} />}
-  </СartContext.Consumer>
-);
+export default HeaderCart;

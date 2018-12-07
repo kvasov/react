@@ -87,7 +87,7 @@ class Gallery extends React.PureComponent {
 
   showNext() {
     const newVal =
-      this.state.currentImg == this.state.countImages - 1 ? 0 : this.state.currentImg + 1;
+      this.state.currentImg == this.state.countImages - 1 ? 0 : parseInt(this.state.currentImg) + 1;
 
     this.setState({
       hasBeenSwiped: true

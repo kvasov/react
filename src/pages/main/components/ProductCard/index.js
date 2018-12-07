@@ -8,7 +8,7 @@ import { productPath } from '~/helpers/routes/product';
 import Image from '~/core/components/Image';
 import TextBox from '~/core/components/TextBox';
 import Price from '~/core/components/Price';
-import ProductAdd from '../ProductAdd/index';
+import ProductAdd from '../ProductAdd/Container';
 
 import './style.scss';
 

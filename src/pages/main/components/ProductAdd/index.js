@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
-import СartContext from '~/core/components/cartContext';
+import { map } from 'lodash/collection';
 
 import './style.scss';
 
@@ -11,6 +10,17 @@ class ProductAdd extends React.PureComponent {
     count: 1,
     countError: false
   };
+
+  checkItemInCart(id) {
+    let res = false;
+    map(this.props.products, product => {
+      if (product.id == id) {
+        res = true;
+      }
+    });
+
+    return res;
+  }
 
   handleChangeCount = e => {
     this.setState({
@@ -22,33 +32,34 @@ class ProductAdd extends React.PureComponent {
   render() {
     const { data } = this.props;
     return (
-      <СartContext.Consumer>
-        {({ addToCart, checkItemInCart }) =>
-          checkItemInCart(data.id) ? (
-            <span className="product-card__exist">Добавлено</span>
-          ) : (
-            <React.Fragment>
-              <input
-                className={classNames('product-card__count', {
-                  ['product-card__count--error']: this.state.countError
-                })}
-                value={this.state.count}
-                onChange={this.handleChangeCount}
-              />
-              <button
-                onClick={() => {
-                  if (!this.state.countError) {
-                    addToCart(data.id, data.name, this.state.count);
-                  }
-                }}
-                className="product-card__add"
-              >
-                Add
-              </button>
-            </React.Fragment>
-          )
-        }
-      </СartContext.Consumer>
+      <React.Fragment>
+        {this.checkItemInCart(data.id) ? (
+          <span className="product-card__exist">Добавлено</span>
+        ) : (
+          <React.Fragment>
+            <input
+              className={classNames('product-card__count', {
+                ['product-card__count--error']: this.state.countError
+              })}
+              value={this.state.count}
+              onChange={this.handleChangeCount}
+            />
+            <button
+              onClick={() => {
+                if (!this.state.countError) {
+                  const products = this.props.products.concat([
+                    { id: data.id, name: data.name, count: this.state.count }
+                  ]);
+                  this.props.onAddProducts(products);
+                }
+              }}
+              className="product-card__add"
+            >
+              Add
+            </button>
+          </React.Fragment>
+        )}
+      </React.Fragment>
     );
   }
 }

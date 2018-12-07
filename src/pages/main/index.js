@@ -1,8 +1,7 @@
 import React from 'react';
-import client from '~/helpers/contentful';
 
 import Header from '~/core/components/Header/index';
-import Catalog from './components/Catalog/index';
+import Catalog from './components/Catalog/Container';
 import Favorites from './components/Favorites/index';
 
 class Index extends React.PureComponent {
@@ -10,23 +9,15 @@ class Index extends React.PureComponent {
     products: []
   };
 
-  componentDidMount() {
-    client
-      .getEntries()
-      .then(response => {
-        this.setState({ products: response.items });
-      })
-      .catch(console.error);
-  }
-
   render() {
+    const { products } = this.props;
     return (
       <React.Fragment>
         <Header />
         <div className="main-page">
           <div className="container">
             {this.props.location.state ? this.props.location.state.message : ''}
-            <Catalog products={this.state.products} />
+            <Catalog products={products} />
             <Favorites />
           </div>
         </div>
