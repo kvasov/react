@@ -1,13 +1,13 @@
-import cartBtn from './index';
+import addProduct from './index';
 import { connect } from 'react-redux';
 
 import * as types from '~/constants/actionTypes/CartActionTypes';
 
 const mapDispatchToProps = dispatch => ({
-  onAddProducts: products =>
+  onAddProducts: product =>
     dispatch({
       type: types.ADD_PRODUCT,
-      products
+      product
     })
 });
 
@@ -18,4 +18,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(cartBtn);
+)(addProduct);

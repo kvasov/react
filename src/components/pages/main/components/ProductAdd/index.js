@@ -47,10 +47,11 @@ class ProductAdd extends React.PureComponent {
             <button
               onClick={() => {
                 if (!this.state.countError) {
-                  const products = this.props.products.concat([
-                    { id: data.id, name: data.name, count: this.state.count }
-                  ]);
-                  this.props.onAddProducts(products);
+                  this.props.onAddProducts({
+                    id: data.id,
+                    name: data.name,
+                    count: this.state.count
+                  });
                 }
               }}
               className="product-card__add"

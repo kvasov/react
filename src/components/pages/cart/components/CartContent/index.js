@@ -12,20 +12,10 @@ class CartContent extends React.PureComponent {
         <td>{item.name}</td>
         <td>{item.count}</td>
         <td>
-          <div onClick={() => this.removeFromCart(i)}>удалить</div>
+          <div onClick={() => this.props.onRemoveProduct(i)}>удалить</div>
         </td>
       </tr>
     ));
-  }
-
-  removeFromCart(id) {
-    const res = [];
-    map(this.props.products, (product, i) => {
-      if (id !== i) {
-        res.push(product);
-      }
-    });
-    this.props.onRemoveProduct(res);
   }
 
   render() {

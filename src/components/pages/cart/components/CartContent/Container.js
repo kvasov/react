@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import * as types from '~/constants/actionTypes/CartActionTypes';
 
 const mapDispatchToProps = dispatch => ({
-  onRemoveProduct: products =>
+  onRemoveProduct: product =>
     dispatch({
       type: types.REMOVE_PRODUCT,
-      products
+      product
     })
 });
 
