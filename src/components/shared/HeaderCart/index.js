@@ -26,10 +26,6 @@ class HeaderCart extends React.PureComponent {
     e.preventDefault();
   };
 
-  componentDidMount() {
-    this.props.onMount();
-  }
-
   render() {
     return (
       <Link
