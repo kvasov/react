@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
 import store from './store/index';
+import * as types from 'constants/actionTypes/CartActionTypes';
 
 import { Router } from 'react-router-dom';
 
@@ -19,6 +20,10 @@ import './styles/reset.scss';
 
 history.listen(historyCb);
 historyCb(window.location, 'PUSH');
+
+store.dispatch({
+  type: types.RESTORE_FROM_LS
+});
 
 function Root() {
   return (

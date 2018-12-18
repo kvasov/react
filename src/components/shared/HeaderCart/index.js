@@ -42,6 +42,7 @@ class HeaderCart extends React.PureComponent {
 
 HeaderCart.propTypes = {
   addToCart: PropTypes.func,
+  onMount: PropTypes.func,
   cart: PropTypes.array
 };
 

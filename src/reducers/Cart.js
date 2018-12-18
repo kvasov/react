@@ -8,16 +8,19 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
+  let products = [];
+  const res = [];
+
   switch (action.type) {
+    case types.RESTORE_FROM_LS:
+      products = action.products;
+      return assign({}, initialState, { products });
     case types.ADD_PRODUCT:
-      // Так вообще можно делать? объявлять переменные в case.
-      // eslint не одобряет :)
-      const products = state.products.concat([action.product]);
+      products = state.products.concat([action.product]);
       return assign({}, initialState, { products });
     case types.REMOVE_PRODUCT:
-      const res = [];
-      map(state.products, (product, i) => {
-        if (action.product !== i) {
+      map(state.products, product => {
+        if (action.product !== product.id) {
           res.push(product);
         }
       });
