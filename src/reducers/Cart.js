@@ -25,6 +25,8 @@ export default function(state = initialState, action) {
         }
       });
       return assign({}, initialState, { products: res });
+    case types.CLEAR_CART:
+      return initialState;
     default:
       return state;
   }
