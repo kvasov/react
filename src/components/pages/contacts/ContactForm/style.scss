@@ -1,0 +1,24 @@
+.contact-from {
+  width: 400px;
+  margin: 50px 0 0 50px;
+
+  input,
+  textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  input {
+    height: 20px;
+  }
+
+  .error {
+    border: 1px solid red;
+  }
+
+  textarea {
+    height: 60px;
+  }
+}

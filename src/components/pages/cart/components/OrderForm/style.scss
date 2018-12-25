@@ -1,0 +1,36 @@
+.order-from {
+  width: 400px;
+  margin: 50px 0 0 50px;
+
+  .form-row {
+    margin-bottom: 10px;
+  }
+
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .input-text {
+    height: 20px;
+  }
+
+  .input-text--error {
+    border: 1px solid red;
+  }
+
+  .error {
+    border: 1px solid red;
+  }
+
+  .error-field {
+    color: red;
+    font-size: 12px;
+  }
+
+  textarea {
+    height: 60px;
+  }
+}
