@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from '~/components/shared/Header/index';
+import Header from 'components/shared/Header/index';
 import Catalog from './components/Catalog/Container';
 import Favorites from './components/Favorites/index';
 

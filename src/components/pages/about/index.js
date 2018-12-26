@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from '~/components/shared/Header/index';
+import Header from 'components/shared/Header/index';
 
 function About() {
   return (

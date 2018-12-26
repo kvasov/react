@@ -1,7 +1,7 @@
 import mainPage from './index';
 import { connect } from 'react-redux';
 
-import * as types from '~/constants/actionTypes/CatalogActionTypes';
+import * as types from 'constants/actionTypes/CatalogActionTypes';
 
 const mapDispatchToProps = dispatch => ({
   requestProducts: () => {

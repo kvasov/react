@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash/collection';
-import client from '~/helpers/contentful';
+import client from 'helpers/contentful';
 
 import ProductCard from '../ProductCard';
 import './style.scss';

@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { map } from 'lodash/collection';
 
-import Modal from '~/components/shared/Modal/index';
+import Modal from 'components/shared/Modal/index';
 
 import './style.scss';
 

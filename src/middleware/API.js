@@ -1,4 +1,4 @@
-import client from '~/helpers/contentful';
+import client from 'helpers/contentful';
 import { assign, pick } from 'lodash/object';
 
 function APICall({ data }) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 
-import Header from '~/components/shared/Header/index';
+import Header from 'components/shared/Header/index';
 import ProductGallery from './components/Gallery/index';
 
 import './style.scss';
