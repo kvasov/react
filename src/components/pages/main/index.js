@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Helmet from 'react-helmet';
+
 import Header from 'components/shared/Header/index';
 import Catalog from './components/Catalog/Container';
 import Favorites from './components/Favorites/index';
@@ -14,6 +16,7 @@ class Index extends React.PureComponent {
     return (
       <React.Fragment>
         <Header />
+        <Helmet title="Главная" />
         <div className="main-page">
           <div className="container">
             {this.props.location.state ? this.props.location.state.message : ''}

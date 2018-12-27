@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 
+import Helmet from 'react-helmet';
+
 import Header from 'components/shared/Header/index';
 import ProductGallery from './components/Gallery/index';
 
@@ -27,6 +29,7 @@ class Product extends React.PureComponent {
         <Header />
         {product && (
           <div className="product">
+            <Helmet title={product.name} />
             <div className="container">
               <ProductGallery currentImg={currentImg} photos={GetImagesArray(product.gallery)} />
               <div className="product__info">{product.name}</div>

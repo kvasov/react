@@ -7,6 +7,8 @@ import createStore from 'store/index';
 import routes from 'routes/index';
 import { historyCb } from 'helpers/history';
 
+import Helmet from 'react-helmet';
+
 export default (req, res) => {
   const store = createStore();
 
@@ -14,7 +16,8 @@ export default (req, res) => {
     const context = {};
     return {
       content: renderToString(<App store={store} location={req.url} context={context} />),
-      initialState: store.getState()
+      initialState: store.getState(),
+      helmet: Helmet.renderStatic()
     };
   });
 };
