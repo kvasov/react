@@ -1,15 +1,14 @@
+/* globals __CLIENT__, __SERVER__ */
+
 import createBrowserHistory from 'history/createBrowserHistory';
-import routes from '../routes/index';
 import { matchPath } from 'react-router-dom';
 import { parse } from 'qs';
 import prepareData from './prepareData';
-import store from '../store/index';
 
-// Подскажи, как записать без default?
-// чтобы сразу экспортировать и то и то
-export default createBrowserHistory();
+const history = __SERVER__ ? {} : createBrowserHistory();
+export default history;
 
-export function historyCb(location, action = 'PUSH') {
+export const historyCb = (store, routes, location) => {
   const state = { params: {}, query: {}, routes: [] };
 
   routes.some(route => {
@@ -18,11 +17,14 @@ export function historyCb(location, action = 'PUSH') {
     if (match) {
       state.routes.push(route);
       Object.assign(state.params, match.params);
-      Object.assign(state.query, parse(location.search.substr(1)));
+
+      if (__CLIENT__) Object.assign(state.query, parse(location.search.substr(1)));
+
+      if (__SERVER__) state.query = location.query;
     }
 
     return match;
   });
 
-  prepareData(store, state);
-}
+  return prepareData(store, state);
+};

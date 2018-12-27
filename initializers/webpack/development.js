@@ -13,7 +13,13 @@ module.exports = merge(common, {
       }
     ]
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      __CLIENT__: true,
+      __SERVER__: false
+    })
+  ],
   devServer: {
     contentBase: path.resolve(process.cwd(), 'dist'),
     hot: true,

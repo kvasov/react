@@ -9,7 +9,7 @@ import './style.scss';
 function Menu() {
   return (
     <React.Fragment>
-      <Link to={aboutPath()}>О нас123</Link>
+      <Link to={aboutPath()}>О нас</Link>
       <Link to={contactsPath()}>Контакты</Link>
     </React.Fragment>
   );

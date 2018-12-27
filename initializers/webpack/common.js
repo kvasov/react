@@ -13,7 +13,10 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        include: [
+          path.resolve(process.cwd(), 'src'),
+          path.resolve(process.cwd(), 'initializers', 'server')
+        ],
         use: ['babel-loader']
       },
       {

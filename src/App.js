@@ -1,5 +1,12 @@
+/* globals __CLIENT__, __SERVER__ */
+
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { Router, StaticRouter, Route, Switch } from 'react-router-dom';
+
+import routes from './routes/index';
+
+import './styles/reset.scss';
 
 function RouteWithSubRoutes(route) {
   return (
@@ -12,13 +19,28 @@ function RouteWithSubRoutes(route) {
   );
 }
 
-function App(props) {
+const AppRouter = ({ history, children, location, context }) => {
+  if (__CLIENT__) return <Router history={history}>{children}</Router>;
+
+  if (__SERVER__)
+    return (
+      <StaticRouter location={location} context={context}>
+        {children}
+      </StaticRouter>
+    );
+};
+
+function App({ history, store, location, context }) {
   return (
-    <Switch>
-      {props.routes.map((route, i) => (
-        <RouteWithSubRoutes key={i} {...route} />
-      ))}
-    </Switch>
+    <Provider store={store}>
+      <AppRouter history={history} context={context} location={location}>
+        <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </Switch>
+      </AppRouter>
+    </Provider>
   );
 }
 
