@@ -79,6 +79,7 @@
     "redux": "^4.0.1",
     "redux-form": "^7.4.2",
     "redux-thunk": "^2.3.0",
+    "source-map-support": "^0.5.10",
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-node-externals": "^1.7.2"
   },

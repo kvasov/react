@@ -7,8 +7,8 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = merge(common, {
   mode: 'production',
-
   target: 'node',
+  devtool: 'source-map',
 
   entry: path.resolve(process.cwd(), 'initializers', 'server', 'index.js'),
 
