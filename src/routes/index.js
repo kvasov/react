@@ -35,9 +35,7 @@ export default [
   {
     path: productPath(),
     render: ({ match }) => <ProductPage id={match.params.id} />,
-    prepareData: (store, query, params) => {
-      store.dispatch(fetchProduct(params.id));
-    }
+    prepareData: (store, query, params) => store.dispatch(fetchProduct(params.id))
   },
   {
     path: cartPath(),
