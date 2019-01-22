@@ -5,9 +5,6 @@ import { matchPath } from 'react-router-dom';
 import { parse } from 'qs';
 import prepareData from './prepareData';
 
-const history = __SERVER__ ? {} : createBrowserHistory();
-export default history;
-
 export const historyCb = (store, routes, location) => {
   const state = { params: {}, query: {}, routes: [] };
 
@@ -28,3 +25,6 @@ export const historyCb = (store, routes, location) => {
 
   return prepareData(store, state);
 };
+
+const history = __SERVER__ ? {} : createBrowserHistory();
+export default history;

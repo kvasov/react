@@ -9,14 +9,15 @@ import routes from 'routes/index';
 import history from './helpers/history';
 import { historyCb } from './helpers/history';
 
-history.listen(location => historyCb(store, routes, location));
-
-import App from './App';
-
 const store = configureStore(window.INITIAL_STATE);
 store.dispatch({
   type: types.RESTORE_FROM_LS
 });
+
+history.listen(location => historyCb(store, routes, location));
+historyCb(store, routes, location);
+
+import App from './App';
 
 function Root() {
   return <App history={history} store={store} />;
