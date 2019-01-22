@@ -15,7 +15,6 @@ store.dispatch({
 });
 
 history.listen(location => historyCb(store, routes, location));
-historyCb(store, routes, location);
 
 import App from './App';
 

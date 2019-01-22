@@ -20,14 +20,17 @@ function RouteWithSubRoutes(route) {
 }
 
 const AppRouter = ({ history, children, location, context }) => {
-  if (__CLIENT__) return <Router history={history}>{children}</Router>;
+  if (__CLIENT__) {
+    return <Router history={history}>{children}</Router>;
+  }
 
-  if (__SERVER__)
+  if (__SERVER__) {
     return (
       <StaticRouter location={location} context={context}>
         {children}
       </StaticRouter>
     );
+  }
 };
 
 function App({ history, store, location, context }) {
