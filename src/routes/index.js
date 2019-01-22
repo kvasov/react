@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Helmet from 'react-helmet';
+
 import { rootPath } from '../helpers/routes/index';
 import { aboutPath } from '../helpers/routes/about';
 import { contactsPath } from '../helpers/routes/contacts';
@@ -15,7 +17,12 @@ import CartPage from '../components/pages/cart/index';
 import { fetchProduct } from '../actions/Product';
 
 function NotFound() {
-  return <div>NotFound</div>;
+  return (
+    <React.Fragment>
+      <Helmet title="404" />
+      <div>Page not found :(</div>
+    </React.Fragment>
+  );
 }
 
 export default [
