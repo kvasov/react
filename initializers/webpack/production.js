@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./common');
 const path = require('path');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -59,6 +60,9 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].[hash].css'
     }),
-    new ManifestPlugin()
+    new ManifestPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
+    })
   ]
 });
