@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 app.get('*', (req, res) => {
   render(req, res)
     .then(result => {
-      res.status(200);
+      res.status(result.context.status || 200);
       res.render('index', {
         content: result.content,
         helmet: result.helmet,

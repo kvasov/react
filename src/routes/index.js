@@ -8,12 +8,13 @@ import { contactsPath } from '../helpers/routes/contacts';
 import { productPath } from '../helpers/routes/product';
 import { cartPath } from '../helpers/routes/cart';
 
-import MainPage from '../components/pages/main/index';
+import MainPage from '../components/pages/main/Container';
 import AboutPage from '../components/pages/about/index';
 import contactsPage from '../components/pages/contacts/index';
 import ProductPage from '../components/pages/product/Container';
 import CartPage from '../components/pages/cart/index';
 
+import { fetchProducts } from '../actions/Products';
 import { fetchProduct } from '../actions/Product';
 
 function NotFound() {
@@ -29,7 +30,8 @@ export default [
   {
     path: rootPath(),
     exact: true,
-    component: MainPage
+    component: MainPage,
+    prepareData: (store, query, params) => store.dispatch(fetchProducts())
   },
   {
     path: aboutPath(),
@@ -49,6 +51,11 @@ export default [
     component: CartPage
   },
   {
-    component: NotFound
+    render: ({ staticContext }) => {
+      if (staticContext) {
+        staticContext.status = 404;
+      }
+      return <NotFound />;
+    }
   }
 ];

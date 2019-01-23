@@ -8,7 +8,7 @@
     "cleanup": "rm -rf public/assets",
     "start": "webpack-dev-server --config ./initializers/webpack/development.js",
     "build": "webpack --config ./initializers/webpack/production.js",
-    "build:server": "yarn cleanup && yarn build && webpack --config ./initializers/webpack/server.js",
+    "build:server": "yarn cleanup && yarn build && webpack --config ./initializers/webpack/server.js && rm -rf public/index.html",
     "start:server": "yarn build:server && node ./build/server.js"
   },
   "repository": {

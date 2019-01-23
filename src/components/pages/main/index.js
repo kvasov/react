@@ -3,30 +3,24 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Header from 'components/shared/Header/index';
-import Catalog from './components/Catalog/Container';
+import Catalog from './components/Catalog/index';
 import Favorites from './components/Favorites/index';
 
-class Index extends React.PureComponent {
-  state = {
-    products: []
-  };
-
-  render() {
-    const { products } = this.props;
-    return (
-      <React.Fragment>
-        <Header />
-        <Helmet title="Главная" />
-        <div className="main-page">
-          <div className="container">
-            {this.props.location.state ? this.props.location.state.message : ''}
-            <Catalog products={products} />
-            <Favorites />
-          </div>
+function Index(props) {
+  const { location, products } = props;
+  return (
+    <React.Fragment>
+      <Header />
+      <Helmet title="Главная" />
+      <div className="main-page">
+        <div className="container">
+          {location.state ? location.state.message : ''}
+          <Catalog products={products} />
+          <Favorites />
         </div>
-      </React.Fragment>
-    );
-  }
+      </div>
+    </React.Fragment>
+  );
 }
 
 export default Index;

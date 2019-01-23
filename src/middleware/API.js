@@ -2,11 +2,19 @@ import client from 'helpers/contentful';
 import { assign, pick } from 'lodash/object';
 
 function APICall({ data }) {
+  const count = Object.keys(data)
+    .map(p => data[p])
+    .filter(v => v).length;
+
   return new Promise((resolve, reject) => {
     const c = client
       .getEntries(data)
       .then(response => {
-        resolve(response.items[0].fields);
+        if (count == 2) {
+          resolve(response.items[0].fields);
+        } else {
+          resolve(response.items);
+        }
       })
       .catch(error => {
         reject(error);
