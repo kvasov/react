@@ -29,7 +29,10 @@ class Product extends React.PureComponent {
         <Header />
         {product && (
           <div className="product">
-            <Helmet title={product.name} />
+            <Helmet>
+              <title>{product.name}</title>
+              <meta name="description" content="ключевые слова" />
+            </Helmet>
             <div className="container">
               <ProductGallery currentImg={currentImg} photos={GetImagesArray(product.gallery)} />
               <div className="product__info">{product.name}</div>

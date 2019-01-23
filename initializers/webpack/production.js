@@ -60,9 +60,9 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].[hash].css'
     }),
-    new ManifestPlugin(),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static'
-    })
+    new ManifestPlugin()
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: 'static'
+    // })
   ]
 });
