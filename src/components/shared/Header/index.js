@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { Link } from 'react-router-dom';
-import { rootPath } from '~/helpers/routes/index';
+import { rootPath } from 'helpers/routes/index';
 
 import HeaderMenu from '../HeaderMenu/index';
 import HeaderCart from '../HeaderCart/Container';

@@ -1,18 +1,20 @@
+/* globals __CLIENT__ */
 import { createStore, applyMiddleware, compose } from 'redux';
 
 import APIMiddleWare from '../middleware/API';
 import LocalStorageMiddleWare from '../middleware/LS';
 
-import DevTools from '../containers/DevTools';
-
 import reducers from '../reducers/index';
 
-const store = createStore(
-  reducers,
-  compose(
-    applyMiddleware(APIMiddleWare, LocalStorageMiddleWare),
-    DevTools.instrument()
-  )
-);
+export default function(INITIAL_STATE = {}) {
+  let enhancers = [];
 
-export default store;
+  // eslint-disable-next-line
+  if (__CLIENT__) {
+    const { logger } = require('redux-logger');
+    enhancers.push(logger);
+  }
+
+  enhancers = enhancers.concat([APIMiddleWare, LocalStorageMiddleWare]);
+  return createStore(reducers, INITIAL_STATE, compose(applyMiddleware(...enhancers)));
+}

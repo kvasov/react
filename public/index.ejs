@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- helmet.title.toString() %>
+    <%- helmet.meta.toString() %>
+    <meta
+      content="width=device-width, initial-scale=1, user-scalable=no"
+      name="viewport"
+    />
+    <link rel="stylesheet" href="<%- manifest["main.css"] %>" />
+
+  <body>
+    <div id="root"><%- content %></div>
+    <div id="modal"></div>
+    <script>window.INITIAL_STATE = <%- initialState %>;</script>
+    <script src="<%- manifest["main.js"] %>"></script>
+  </body>
+</html>

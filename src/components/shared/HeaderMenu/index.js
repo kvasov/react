@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { aboutPath } from '~/helpers/routes/about';
-import { contactsPath } from '~/helpers/routes/contacts';
+import { aboutPath } from 'helpers/routes/about';
+import { contactsPath } from 'helpers/routes/contacts';
 
 import './style.scss';
 

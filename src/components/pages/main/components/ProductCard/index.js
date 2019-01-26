@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { productPath } from '~/helpers/routes/product';
+import { productPath } from 'helpers/routes/product';
 
-import Image from '~/components/shared/Image';
-import TextBox from '~/components/shared/TextBox';
-import Price from '~/components/shared/Price';
+import Image from 'components/shared/Image';
+import TextBox from 'components/shared/TextBox';
+import Price from 'components/shared/Price';
 import ProductAdd from '../ProductAdd/Container';
 
 import './style.scss';

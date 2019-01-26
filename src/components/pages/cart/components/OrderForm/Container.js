@@ -3,7 +3,7 @@ import { reduxForm, SubmissionError } from 'redux-form';
 import axios from 'axios';
 import form from './index';
 
-import * as types from '~/constants/actionTypes/CartActionTypes';
+import * as types from 'constants/actionTypes/CartActionTypes';
 
 const onSubmit = (vals, dispatch) => {
   dispatch({

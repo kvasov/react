@@ -1,6 +1,6 @@
 import React from 'react';
 import { map } from 'lodash/collection';
-import client from '~/helpers/contentful';
+import client from 'helpers/contentful';
 
 import './style.scss';
 
